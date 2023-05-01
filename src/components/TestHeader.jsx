@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useLocalStorage from 'use-local-storage';
-import { setLogout } from '../slices/userSlice';
 import DarkModeToggle from './DarkModeToggle';
 import Modal from './Modal';
+import ModalVT from './ModalVT';
 
 const TestHeader = ({ QAId }) => {
     const [modalVisible, setModalVisible] = useState(false);
@@ -13,6 +13,7 @@ const TestHeader = ({ QAId }) => {
     const [mode, setMode] = useLocalStorage('mode' ? 'dark' : 'light');
 
     const state = useSelector((state) => state.user);
+
     const isLogin = state?.profile?.login;
 
     if (
@@ -42,15 +43,13 @@ const TestHeader = ({ QAId }) => {
                     </label>
                 </div>
                 {/* 2*/}
-                <div className='flex items-center'>
-                    {QAId && `TestHeader QAId = ${QAId}`}
-                </div>
+                <div className='flex items-center'>{QAId}</div>
                 {/* 3 */}
                 <div className='flex items-center'>
                     <label
                         onClick={() => {
                             setModalVisible(true);
-                            setWitchModal(2);
+                            setWitchModal(4);
                         }}
                     >
                         虛擬教師
@@ -62,7 +61,7 @@ const TestHeader = ({ QAId }) => {
                         <label
                             onClick={() => {
                                 setModalVisible(true);
-                                setWitchModal(3);
+                                setWitchModal(2);
                             }}
                         >
                             登出
@@ -76,6 +75,7 @@ const TestHeader = ({ QAId }) => {
                 </div>
             </div>
             <Modal Visible={modalVisible} Close={setModalVisible} Modal={witchModal} />
+            <ModalVT Visible={modalVisible} Close={setModalVisible} Modal={witchModal} />
         </header>
     );
 };

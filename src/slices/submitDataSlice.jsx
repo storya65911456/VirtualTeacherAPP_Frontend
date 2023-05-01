@@ -4,7 +4,7 @@ const submitState = {
     data: [
         {
             ID: 1,
-            Question: 'QQQQ?',
+            Question: '?',
             A: '核仁',
             B: '內質網 ',
             C: '核糖體',

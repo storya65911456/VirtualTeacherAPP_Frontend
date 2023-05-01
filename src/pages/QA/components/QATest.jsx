@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { setSubmitData } from '../slices/submitDataSlice';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSubmitData } from '../../../slices/submitDataSlice';
 
 const QATest = ({ QAId }) => {
     const submitData = useSelector((state) => state.submit);

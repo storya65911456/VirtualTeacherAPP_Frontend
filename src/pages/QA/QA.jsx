@@ -1,16 +1,13 @@
-import React from 'react';
-import { useState, useRef, useEffect } from 'react';
-import QATest from '../../components/QATest';
+import React, { useEffect, useRef, useState } from 'react';
+import Modal from '../../components/Modal';
 import TestHeader from '../../components/TestHeader';
-import { useDispatch } from 'react-redux';
-import { setSubmitDataDefault } from '../../slices/submitDataSlice';
+import QATest from './components/QATest';
 
 const QA = () => {
     const [QAId, setQAId] = useState(1);
 
-    const dispatch = useDispatch();
-
-    const [modalQVisible, setModalQVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [witchModal, setWitchModal] = useState(0);
 
     return (
         <div className='h-screen'>
@@ -44,7 +41,8 @@ const QA = () => {
                 <div className='flex h-full w-1/3 items-center justify-center'>
                     <button
                         onClick={() => {
-                            dispatch(setSubmitDataDefault());
+                            setModalVisible(true);
+                            setWitchModal(3);
                         }}
                     >
                         結束測驗
@@ -61,6 +59,7 @@ const QA = () => {
                     </button>
                 </div>
             </div>
+            <Modal Visible={modalVisible} Close={setModalVisible} Modal={witchModal} />
         </div>
     );
 };

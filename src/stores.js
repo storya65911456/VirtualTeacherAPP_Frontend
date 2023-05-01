@@ -1,24 +1,25 @@
 import { configureStore } from '@reduxjs/toolkit';
-import storageSession from 'redux-persist/lib/storage/session';
 import { combineReducers } from 'redux';
-import { NursingApi } from './services/QAServices';
-import userSlice from './slices/userSlice';
-import submitDataSlice from './slices/submitDataSlice';
-
 import {
-    persistStore,
-    persistReducer,
     FLUSH,
-    REHYDRATE,
     PAUSE,
     PERSIST,
     PURGE,
-    REGISTER
+    REGISTER,
+    REHYDRATE,
+    persistReducer,
+    persistStore
 } from 'redux-persist';
+import storageSession from 'redux-persist/lib/storage/session';
+import { NursingApi } from './services/QAServices';
+import VTSlice from './slices/VTSlice';
+import submitDataSlice from './slices/submitDataSlice';
+import userSlice from './slices/userSlice';
 
 const reducers = combineReducers({
     submit: submitDataSlice,
     user: userSlice,
+    vt: VTSlice,
     [NursingApi.reducerPath]: NursingApi.reducer
 });
 
@@ -26,7 +27,7 @@ const persistConfig = {
     key: 'root',
     storage: storageSession,
     whitelist: ['user'], //需要缓存的数据 TODO:
-    blacklist: ['submit'] //不需要缓存的数据
+    blacklist: ['submit', 'vt'] //不需要缓存的数据
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

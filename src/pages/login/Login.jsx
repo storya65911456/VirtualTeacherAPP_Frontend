@@ -21,7 +21,7 @@ const Login = () => {
     const { data, error, isSuccess, isLoading } = useGetUserQuery(inputObj, {
         skip: skip
     });
-    // console.log('data', data);
+    console.log('data', data);
     // console.log('error', error);
     // console.log('skip', skip);
 
@@ -64,8 +64,10 @@ const Login = () => {
                             setPass(e.target.value);
                         }}
                     />
-                    {(error || data == 0) && (
-                        <p className='w-full text-xs text-red-600'>錯誤</p>
+                    {(error || data?.[0] == 0) && (
+                        <p className='w-full text-xs text-red-600'>
+                            {data?.[1] ? data[1] : '錯誤'}
+                        </p>
                     )}
                     <button className='float-left my-2 w-2/5' onClick={() => {}}>
                         R

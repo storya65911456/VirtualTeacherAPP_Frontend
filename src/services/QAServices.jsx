@@ -13,8 +13,15 @@ export const NursingApi = createApi({
                 method: 'POST',
                 body: { account: account, password: pass }
             })
+        }),
+        getQA: builder.query({
+            query: (val) => ({
+                url: `QA`,
+                method: 'POST',
+                body: { query: val }
+            })
         })
     })
 });
 
-export const { useGetQATestQuery, useGetUserQuery } = NursingApi;
+export const { useGetQATestQuery, useGetUserQuery, useLazyGetQAQuery } = NursingApi;
