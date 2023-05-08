@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'; //取得redux定義的state
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux'; //取得redux定義的state
-import { useDispatch } from 'react-redux'; //取得redux定義的func
 import TestHeader from '../../components/TestHeader';
-import { useGetQATestQuery } from '../../services/QAServices';
+import { useLazyGetQATestQuery } from '../../services/QAServices';
 import { setSubmitDataNew } from '../../slices/submitDataSlice';
 
 const Home = () => {
@@ -11,11 +10,7 @@ const Home = () => {
 
     const go = useNavigate();
 
-    const { data, error, isSuccess, isLoading, refetch } = useGetQATestQuery();
-
-    useEffect(() => {
-        QADispatch(setSubmitDataNew({ data }));
-    }, [data]);
+    const [getData, { isSuccess, isLoading }] = useLazyGetQATestQuery();
 
     return (
         <div className='h-screen'>
@@ -39,8 +34,9 @@ const Home = () => {
                     <div className='flex h-1/6 w-full items-center justify-center'>
                         <button
                             className='w-1/2'
-                            onClick={() => {
-                                refetch();
+                            onClick={async () => {
+                                const { data } = await getData();
+                                QADispatch(setSubmitDataNew({ data }));
                                 go('/QA');
                             }}
                         >

@@ -26,8 +26,8 @@ const reducers = combineReducers({
 const persistConfig = {
     key: 'root',
     storage: storageSession,
-    whitelist: ['user'], //需要缓存的数据 TODO:
-    blacklist: ['submit', 'vt'] //不需要缓存的数据
+    whitelist: ['user', 'submit'], //需要缓存的数据 TODO:
+    blacklist: ['vt'] //不需要缓存的数据
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import useLocalStorage from 'use-local-storage';
 import DarkModeToggle from './DarkModeToggle';
 import Modal from './Modal';
@@ -26,35 +25,37 @@ const TestHeader = ({ QAId }) => {
         document.documentElement.classList.remove('light');
     }
 
-    const go = useNavigate();
-
     return (
         <header className='top-0'>
             <div className='box-border flex h-[50px] items-center justify-between border-b-2 px-2'>
                 {/* 1 */}
-                <div className='flex items-center'>
-                    <label
-                        onClick={() => {
-                            setModalVisible(true);
-                            setWitchModal(1);
-                        }}
-                    >
-                        回選單
-                    </label>
-                </div>
+                {isLogin && (
+                    <div className='flex items-center'>
+                        <label
+                            onClick={() => {
+                                setModalVisible(true);
+                                setWitchModal(1);
+                            }}
+                        >
+                            回選單
+                        </label>
+                    </div>
+                )}
                 {/* 2*/}
                 <div className='flex items-center'>{QAId}</div>
                 {/* 3 */}
-                <div className='flex items-center'>
-                    <label
-                        onClick={() => {
-                            setModalVisible(true);
-                            setWitchModal(4);
-                        }}
-                    >
-                        虛擬教師
-                    </label>
-                </div>
+                {isLogin && (
+                    <div className='flex items-center'>
+                        <label
+                            onClick={() => {
+                                setModalVisible(true);
+                                setWitchModal(4);
+                            }}
+                        >
+                            虛擬教師
+                        </label>
+                    </div>
+                )}
                 {/* 4 */}
                 {isLogin && (
                     <div className='flex items-center'>
@@ -68,7 +69,6 @@ const TestHeader = ({ QAId }) => {
                         </label>
                     </div>
                 )}
-
                 {/* 5 */}
                 <div>
                     <DarkModeToggle mode={mode} setMode={setMode} />

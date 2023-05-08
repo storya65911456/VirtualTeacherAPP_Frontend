@@ -7,6 +7,7 @@
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
+    /* #2c3338 #242424*/
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -17,12 +18,28 @@
 
     div {
         border-color: #48cae4;
-        li{
+        /* #FFFF00  #48cae4*/
+        li {
             border-color: #48cae4;
         }
     }
-} 
+}
 
+.placeholder-effects:focus::placeholder {
+    font-weight: bold;
+    color: #ea4c88;
+    transition: all 0.3s linear;
+}
+
+.focused {
+    background-color: #1a1a1a;
+    font-weight: bold;
+    font-size: 12px;
+    top: -6px;
+    left: 5px;
+    color: #ea4c88;
+    transition: all 0.3s linear;
+}
 
 a {
     font-weight: 500;
@@ -56,15 +73,24 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
 }
-button:hover {
-    border-color: #646cff;
+button {
+    transition: 0.25s;
+    &:hover,
+    &:focus {
+        border-color: #ea4c88;
+        color: #fff;
+    }
 }
+button:hover,
 button:focus,
 button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    /* outline: 4px auto -webkit-focus-ring-color; */
+    box-shadow: 0 0.5em 0.5em -0.4em #ea4c88;
+    transform: translateY(-0.25em);
+    /* #ea4c88 #6366f1*/
 }
 
-#Modal{
+#Modal {
     background-color: #242424;
 }
 
@@ -77,17 +103,17 @@ button:focus-visible {
         color: #747bff;
     }
     button {
-        color:#f9f9f9;
+        color: #f9f9f9;
         background-color: #1a1a1a;
     }
 }
 
-.light{
+.light {
     #root {
         color: #1a1a1a;
-        background-color: #D3D3D3;
+        background-color: #f2f2f2;
     }
-    #Modal{
+    #Modal {
         color: #1a1a1a;
         background-color: #c4b1bc;
     }
@@ -95,19 +121,19 @@ button:focus-visible {
         color: #747bff;
     }
     button {
-        color:#1a1a1a;
-        background-color: #B87333;
-        
+        color: #1a1a1a;
+        background-color: #b87333;
+
         /*#48cae4 #abc4ff #f72585 #f20089 #E1E1DF #ff85a1*/
     }
-    header{
-        color:#f9f9f9;
+    header {
+        color: #f9f9f9;
         background-color: #1a1a1a;
     }
     div {
-        border-color: #4D1F00;
-        li{
-            border-color: #4D1F00;
+        border-color: #4d1f00;
+        li {
+            border-color: #4d1f00;
         }
     }
 }

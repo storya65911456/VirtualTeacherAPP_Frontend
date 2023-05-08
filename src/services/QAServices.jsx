@@ -24,4 +24,5 @@ export const NursingApi = createApi({
     })
 });
 
-export const { useGetQATestQuery, useGetUserQuery, useLazyGetQAQuery } = NursingApi;
+export const { useLazyGetQATestQuery, useLazyGetUserQuery, useLazyGetQAQuery } =
+    NursingApi;
