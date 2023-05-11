@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const NursingApi = createApi({
     reducerPath: 'NursingApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://35.74.67.223:3000/' }),
     endpoints: (builder) => ({
         getQATest: builder.query({
             query: () => 'GetQuestions'

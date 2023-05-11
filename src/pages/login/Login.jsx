@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import {} from 'react-icons/ci';
 import { useDispatch, useSelector } from 'react-redux'; //取得redux定義的func
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import TestHeader from '../../components/TestHeader';
 import { useLazyGetUserQuery } from '../../services/QAServices';
 import { setLogin } from '../../slices/userSlice';
@@ -45,7 +46,7 @@ const Login = () => {
         passRef.current.value = null;
     };
     return (
-        <div className='h-screen'>
+        <div className='h-screen2'>
             <TestHeader />
             <div className='flex h-5/6 w-full items-center justify-center'>
                 <div className='flex w-2/3 max-w-xs items-center justify-center border py-10 shadow-lg shadow-cyan-500/50'>
@@ -99,21 +100,22 @@ const Login = () => {
                                 {data?.[1] ? data[1] : '錯誤'}
                             </p>
                         )}
-                        <button className='my-2 w-full' onClick={send}>
-                            Login
+                        <button className='my-2 w-full font-bold' onClick={send}>
+                            登入
                         </button>
                         <div className='flex justify-between'>
                             <div className=''>
                                 <input type='checkbox'></input>
-                                <span>記住密碼</span>
+                                <span className='text-xs'>記住我</span>
                             </div>
-                            <a className='' href='#'>
+                            <a className='text-xs underline underline-offset-1' href='#'>
                                 忘記密碼?
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

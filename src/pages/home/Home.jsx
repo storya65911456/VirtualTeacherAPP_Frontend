@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; //取得redux定義的state
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/Footer';
 import TestHeader from '../../components/TestHeader';
 import { useLazyGetQATestQuery } from '../../services/QAServices';
 import { setSubmitDataNew } from '../../slices/submitDataSlice';
@@ -13,7 +14,7 @@ const Home = () => {
     const [getData, { isSuccess, isLoading }] = useLazyGetQATestQuery();
 
     return (
-        <div className='h-screen'>
+        <div className='h-screen2'>
             <TestHeader />
             {/* 上面 */}
             <div className='flex h-1/3 items-center justify-center'>虛擬教師</div>
@@ -68,6 +69,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

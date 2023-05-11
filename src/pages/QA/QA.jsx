@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Footer from '../../components/Footer';
 import Modal from '../../components/Modal';
 import TestHeader from '../../components/TestHeader';
 import QATest from './components/QATest';
@@ -10,7 +11,7 @@ const QA = () => {
     const [witchModal, setWitchModal] = useState(0);
 
     return (
-        <div className='h-screen'>
+        <div className='h-screen2'>
             <TestHeader QAId={QAId} />
             {/* <Test /> */}
             {/* 預留空間 */}
@@ -60,6 +61,7 @@ const QA = () => {
                 </div>
             </div>
             <Modal Visible={modalVisible} Close={setModalVisible} Modal={witchModal} />
+            <Footer />
         </div>
     );
 };

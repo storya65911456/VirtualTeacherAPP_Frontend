@@ -27,7 +27,7 @@ const TestHeader = ({ QAId }) => {
 
     return (
         <header className='top-0'>
-            <div className='box-border flex h-[50px] items-center justify-between border-b-2 px-2'>
+            <div className='box-border flex h-[60px] items-center justify-between border-b-2 px-2'>
                 {/* 1 */}
                 {isLogin && (
                     <div className='flex items-center'>
