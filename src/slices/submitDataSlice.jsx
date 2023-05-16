@@ -10,8 +10,9 @@ const submitState = {
             C: '核糖體',
             D: '中心粒',
             Answer: 'B',
-            Click: '',
-            Finish: 0
+            Click: null,
+            Finish: 0,
+            Correct: null
         }
     ]
 };
@@ -22,8 +23,13 @@ const submitSlice = createSlice({
     reducers: {
         setSubmitData(state, action) {
             const { QAId, Click } = action.payload;
-            const dataS = state.data;
-            const data = dataS[QAId - 1];
+            const copyData = state.data;
+            const data = copyData[QAId - 1];
+            if (data.Answer == Click) {
+                data.Correct = true;
+            } else {
+                data.Correct = false;
+            }
             data.Finish = 1;
             data.Click = Click;
         },

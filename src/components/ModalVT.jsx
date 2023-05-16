@@ -8,6 +8,8 @@ import TextList from './TextList';
 const ModalVT = ({ Visible, Close, Modal }) => {
     const userRef = useRef(null);
 
+    const scrollRef = useRef(null);
+
     const portalTarget = document.getElementById('root');
 
     const VTData = useSelector((state) => state.vt);
@@ -17,6 +19,13 @@ const ModalVT = ({ Visible, Close, Modal }) => {
     const date = new Date();
 
     const [getQAQuery, { isLoading, isFetching }] = useLazyGetQAQuery();
+
+    useEffect(() => {
+        //scrollHeight是页面的高度
+        if (scrollRef.current) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+    }, [VTData]);
 
     const send = async () => {
         const val = userRef.current.value;
@@ -52,7 +61,7 @@ const ModalVT = ({ Visible, Close, Modal }) => {
                     {/* 頭 */}
                     <div className='h-10 w-full border-b border-dashed'>
                         <label
-                            className='ml-auto flex h-full w-fit items-center p-2'
+                            className='ml-auto flex h-full w-fit cursor-pointer items-center p-2'
                             onClick={() => {
                                 Close(false);
                                 dispatch(setDefaultVTData());
@@ -62,7 +71,7 @@ const ModalVT = ({ Visible, Close, Modal }) => {
                         </label>
                     </div>
                     {/* 身 */}
-                    <div className='h-3/4 w-full overflow-auto p-3'>
+                    <div className='h-3/4 w-full overflow-auto p-3' ref={scrollRef}>
                         <ul>
                             <TextList val={VTData} Loading={isFetching} />
                             {isFetching && <span>請稍後</span>}

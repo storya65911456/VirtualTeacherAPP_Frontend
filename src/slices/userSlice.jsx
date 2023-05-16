@@ -4,6 +4,8 @@ const userState = {
     profile: {
         id: '',
         identity: '',
+        correct_num: '',
+        incorrect_num: '',
         login: false
     }
 };
@@ -13,12 +15,15 @@ const userSlice = createSlice({
     initialState: userState,
     reducers: {
         setLogin(state, action) {
-            const { id, identity } = action.payload;
+            const { id, identity, correct_num, incorrect_num } = action.payload;
             state.profile = {
                 id,
                 identity,
+                correct_num,
+                incorrect_num,
                 login: true
             };
+            console.log(state.profile);
         },
         setLogout(state) {
             state.profile = { ...userState.profile };

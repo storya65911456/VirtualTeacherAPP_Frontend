@@ -15,9 +15,9 @@ const QA = () => {
             <TestHeader QAId={QAId} />
             {/* <Test /> */}
             {/* 預留空間 */}
-            <div className='h-1/6'></div>
+            <div className='h-[10%]'></div>
             {/* 問題+選項 */}
-            <div className='flex h-1/2 justify-between'>
+            <div className='flex h-[55%] max-h-fit justify-between overflow-auto'>
                 {/* 預留空間 */}
                 <div className='w-1/6'></div>
                 <div>

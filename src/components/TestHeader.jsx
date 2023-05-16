@@ -32,6 +32,7 @@ const TestHeader = ({ QAId }) => {
                 {isLogin && (
                     <div className='flex items-center'>
                         <label
+                            className='cursor-pointer'
                             onClick={() => {
                                 setModalVisible(true);
                                 setWitchModal(1);
@@ -47,6 +48,7 @@ const TestHeader = ({ QAId }) => {
                 {isLogin && (
                     <div className='flex items-center'>
                         <label
+                            className='cursor-pointer'
                             onClick={() => {
                                 setModalVisible(true);
                                 setWitchModal(4);
@@ -60,6 +62,7 @@ const TestHeader = ({ QAId }) => {
                 {isLogin && (
                     <div className='flex items-center'>
                         <label
+                            className='cursor-pointer'
                             onClick={() => {
                                 setModalVisible(true);
                                 setWitchModal(2);

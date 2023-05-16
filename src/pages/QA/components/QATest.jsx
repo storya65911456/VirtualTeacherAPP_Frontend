@@ -8,7 +8,7 @@ const QATest = ({ QAId }) => {
     const dispatch = useDispatch();
 
     const Symbols = (data, QNum) => {
-        if (data?.Answer == QNum && data?.Click != '')
+        if (data?.Answer == QNum && data?.Click != null)
             return <p className='text-green-500'>&nbsp; ✔ &nbsp;</p>;
         if (data?.Click == QNum) return <p className='text-rose-500'>&nbsp; ✖ &nbsp;</p>;
         return null;
@@ -25,9 +25,9 @@ const QATest = ({ QAId }) => {
                     {/* 答A */}
                     <li
                         id='A'
-                        className='flex h-1/4 cursor-pointer items-center border-y-2'
+                        className='flex h-fit min-h-[25%] cursor-pointer items-center border-y-2'
                         onClick={(e) => {
-                            if (data.Finish == 0) {
+                            if (data.Click == null) {
                                 dispatch(
                                     setSubmitData({
                                         QAId: QAId,
@@ -42,9 +42,9 @@ const QATest = ({ QAId }) => {
                     {/* 答B */}
                     <li
                         id='B'
-                        className='flex h-1/4 cursor-pointer items-center border-b-2'
+                        className='flex h-fit min-h-[25%] cursor-pointer items-center border-b-2'
                         onClick={(e) => {
-                            if (data.Finish == 0) {
+                            if (data.Click == null) {
                                 dispatch(
                                     setSubmitData({
                                         QAId: QAId,
@@ -59,9 +59,9 @@ const QATest = ({ QAId }) => {
                     {/* 答C */}
                     <li
                         id='C'
-                        className='flex h-1/4 cursor-pointer items-center border-b-2'
+                        className='flex h-fit min-h-[25%] cursor-pointer items-center border-b-2'
                         onClick={(e) => {
-                            if (data.Finish == 0) {
+                            if (data.Click == null) {
                                 dispatch(
                                     setSubmitData({
                                         QAId: QAId,
@@ -76,9 +76,9 @@ const QATest = ({ QAId }) => {
                     {/* 答D */}
                     <li
                         id='D'
-                        className='flex h-1/4 cursor-pointer items-center border-b-2'
+                        className='flex h-fit min-h-[25%] cursor-pointer items-center border-b-2'
                         onClick={(e) => {
-                            if (data.Finish == 0) {
+                            if (data.Click == null) {
                                 dispatch(
                                     setSubmitData({
                                         QAId: QAId,
